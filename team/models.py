@@ -20,10 +20,10 @@ class TeamMemberhip(models.Model):
         ('Intern', 'intern')
     ])
     joined_at= models.DateTimeField(auto_now_add=True)
-    is_active= models.BooleanField(default=False)
+    is_active= models.BooleanField(default=True)
 
     class Meta:
-        unique_together = ('user', 'team')
+        unique_together = ('user', 'team') # ensures same user not added twice to same team
 
     def __str__(self):
         return f"{self.user.email} in {self.team.name} as {self.role_in_team}"
